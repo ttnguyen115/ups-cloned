@@ -12,14 +12,14 @@ import { OrderCard, RootStackParams } from "../../components";
 import { TabStackParams } from "../../components/Navigator/TabNavigator";
 import { useOrders } from "../../hooks";
 
-export type OrderScreenNavigationProp = CompositeNavigationProp<
+export type OrdersScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabStackParams, "Orders">,
   NativeStackNavigationProp<RootStackParams>
 >;
 
 export const OrdersScreen = () => {
   const tw = useTailwind();
-  const navigation = useNavigation<OrderScreenNavigationProp>();
+  const navigation = useNavigation<OrdersScreenNavigationProp>();
   const { loading, error, orders } = useOrders();
   const [ascending, setAscending] = React.useState<boolean>(false);
 

@@ -1,12 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { ModalScreen, OrderScreen } from "../../screens";
+import { Order } from "../../types";
 import { TabNavigator } from "./TabNavigator";
 
 export type RootStackParams = {
   Main: undefined;
   MyModal: { userId: string; name: string };
-  Order: { order: any };
+  Order: { order: Order };
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
