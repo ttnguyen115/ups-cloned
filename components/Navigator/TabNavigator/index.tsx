@@ -39,7 +39,7 @@ export const TabNavigator = () => {
               <Icon
                 name="box"
                 type="entypo"
-                color={focused ? "#59C1CC" : "gray"}
+                color={focused ? "#EB6A7C" : "gray"}
               />
             );
           }
