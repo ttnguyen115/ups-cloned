@@ -1,11 +1,11 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { NavigationContainer } from "@react-navigation/native";
 import { TailwindProvider } from "tailwind-rn";
 import { RootNavigator } from "./components";
 import utilities from "./tailwind.json";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5001/api/yodeling-bee",
+  uri: `http://${process.env.DEV_IP_CONFIG_URI}/api/yodeling-bee`,
   cache: new InMemoryCache(),
 });
 
