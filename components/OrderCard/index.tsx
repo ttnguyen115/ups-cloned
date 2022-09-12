@@ -1,8 +1,21 @@
+import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Card, Icon } from "@rneui/themed";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useTailwind } from "tailwind-rn/dist";
 import { Order } from "../../types";
+import { RootStackParams } from "../Navigator";
+import { TabStackParams } from "../Navigator/TabNavigator";
+
+export type OrderScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<TabStackParams, "Orders">,
+  NativeStackNavigationProp<RootStackParams>
+>;
 
 type OrderCard = {
   item: Order;
@@ -10,9 +23,12 @@ type OrderCard = {
 
 export const OrderCard = ({ item }: OrderCard) => {
   const tw = useTailwind();
+  const navigation = useNavigation<OrderScreenNavigationProp>();
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Order", { order: item })}
+    >
       <Card containerStyle={tw("px-5 rounded-lg")}>
         <View style={tw("flex-row justify-between items-center")}>
           <View>
